@@ -22,6 +22,14 @@ public class MouseMovement {
         return true;
     }
 
+    public int getX(){
+        return mouse.getX();
+    }
+
+    public int getY(){
+        return mouse.getY();
+    }
+
     public static void main(String [] args){
         MouseMovement test = new MouseMovement();
         try {

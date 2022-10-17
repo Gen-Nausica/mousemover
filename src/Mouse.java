@@ -8,6 +8,8 @@ public class Mouse extends Thread{
 
     private Robot robot;
     private boolean running;
+    private int x;
+    private int y;
 
     public Mouse(){
         this.running = true;
@@ -22,11 +24,13 @@ public class Mouse extends Thread{
         Random random = new Random();
         System.out.println("Robot running");
         while(running){
-            robot.mouseMove(random.nextInt(MAX_X), random.nextInt(MAX_Y));
+            x = random.nextInt(MAX_X);
+            y = random.nextInt(MAX_Y);
+            robot.mouseMove(x, y);
             System.out.println("Robot moving");
-            try{
+            try {
                 sleep(FIVE_SECONDS);
-            }catch (InterruptedException e){
+            } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
@@ -35,5 +39,13 @@ public class Mouse extends Thread{
 
     public synchronized void stopThread(){
         running = false;
+    }
+
+    public int getX(){
+        return x;
+    }
+
+    public int getY(){
+        return y;
     }
 }
